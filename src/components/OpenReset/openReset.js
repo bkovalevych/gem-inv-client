@@ -3,7 +3,7 @@ import {sendReset} from '../../functions/UserFunctions.js';
 import {Route, Link, BrowserRouter as Router, Redirect} from 'react-router-dom'
 import { withRouter } from 'react-router';
 
-
+//this component to change password
 class openReset extends Component {
     constructor () {
         super();
