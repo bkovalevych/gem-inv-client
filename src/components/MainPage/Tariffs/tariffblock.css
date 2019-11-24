@@ -1,0 +1,68 @@
+.plan-block {
+    margin: 2vh;
+    background-color: white;
+    width: 250px;
+    padding: 3vh 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.plan-block:hover {
+    transform: scale(1.1);
+}
+
+.plan-block>h2 {
+    color: var(--secondary-text-color);
+}
+
+.plan-block>h4 {
+    margin: 0;
+    color: rgb(170, 170, 170);
+}
+
+.profit-block {
+    background-color: var(--profit-line-color);
+    width: 100%;
+    margin-top: 7%;
+}
+
+.profit-percent {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    padding: 2% 1% 0 0;
+}
+
+.plans .short h3 {
+    color: rgb(231, 140, 21);
+    margin: 0;
+}
+
+.profit-percent>h4 {
+    color: var(--main-text-color);
+}
+
+.plans .medium h3 {
+    color: rgb(192, 31, 170);
+    margin: 0;
+}
+
+.plans .long h3 {
+    margin: 0;
+    color: rgb(19, 194, 72);
+}
+
+@media only screen and (max-width: 500px) {
+    .plan-block {
+        width: 70%;
+        margin: 1vh 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

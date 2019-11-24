@@ -1,0 +1,103 @@
+html, body, a, p, h1,h2,h3,h4,h5,h6,i,u,s,main,div,button{
+
+}
+
+:root {
+  --header-padding: 3%;
+  --common-padding: 20%;
+  --stat-padding: 18%;
+  --main-text-color: rgb(49, 49, 49);
+  --secondary-text-color: rgb(92, 92, 92);
+  --main-color: #27b1c1;
+  --header-main-color: rgb(245, 245, 245);
+  --standard-radius: 7px;
+  --profit-line-color: rgb(238, 238, 238);
+  --orange: rgb(255, 115, 0);
+}
+
+* {
+  box-sizing: border-box;
+  cursor: default;
+}
+html {
+  height: 100%;
+}
+body {
+  background-color: var(--main-color);
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.btn {
+  padding: 1vh 1.5vh;
+  position: relative;
+  text-align: center;
+  color: white;
+  /* font-weight: bold; */
+  /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.616); */
+  transition-duration: 0.5s;
+
+}
+
+.about-btn {
+  background: var(--main-color);	  background: var(--main-color);
+  display: inline-block;	  display: inline-block;
+  box-shadow: 0 1px 0 1px rgb(16, 152, 167);
+  margin-top: 1vh;	  margin-top: 1vh;
+}
+
+.btn:hover {
+  /* background-color: rgb(13, 136, 145); */
+  transform: scale(1.1);
+}
+.plan-btn {
+  margin-top: 1.5vh;
+  margin-bottom: 1vh;
+  background: rgb(255, 115, 0);
+  box-shadow: 0 1px 0 1px rgb(216, 81, 18);
+  color: white;
+}
+
+.waiting-btn {
+  width: fit-content;
+  background: white;
+  background: rgb(255, 115, 0);
+  margin-top: 1vh;
+}
+
+@media only screen and (max-width: 500px) {
+  :root {
+    --common-padding: 10%;
+  }
+  .btn {
+    padding: 1.5vh 2vh;
+    font-size: 14pt;
+  }
+}
+
+@keyframes App-logo-spin {
+  /* from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  } */
+}

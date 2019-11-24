@@ -1,0 +1,328 @@
+.ProfilePage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.myProfile {
+    padding: 0vh var(--common-padding);
+}
+.profileData {
+    display: flex;
+    flex-direction: row;
+}
+.name_balance>h2,.balance {
+    margin: 0;
+}
+.name_balance>h2 {
+    display: inline;
+}
+.name_balance> .balance {
+    display: flex;
+    margin-top: 1vh;
+    justify-content: baseline;
+    align-items: baseline;
+
+}
+.name_balance .summ {
+    font-size: 1.3em;
+    margin-left: 1vh;
+    color: rgb(109, 255, 47);
+}
+.row {
+    display: flex;
+    padding: 2vh 0;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.myProfile .name_balance {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.myProfile .settings {
+    padding: .2vh 2vh .5vh 2vh;
+    display: block;
+    font-size: .8em;
+    border-radius: 5px;
+    color: rgb(0, 156, 164);
+    height: fit-content;
+    background-color: rgb(243, 243, 243);
+}
+.myProfile .name_balance .id{
+    color: rgb(251, 251, 251);
+    font-size: .7em;
+    margin-left: 2vh;
+}
+
+.myProfileData {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.myProfileData .col {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    /* flex-direction: column; */
+    /* align-items: baseline; */
+}
+.vertical_divider {
+    height: 100%;
+    width: 2px;
+    background-color: white;
+}
+.profile_info div {
+    margin-bottom: 1.5vh;
+}
+.profile_statistics {
+    width: 100%;
+    padding-left: 7vh;
+    display: flex;
+    flex-direction: column;
+}
+.profile_statistics div {
+    margin-bottom: 1.5vh;
+}
+
+.profile_info_header {
+    color: white;
+}
+
+.myProfileData .wallet {
+    padding: .5vh 1vh;
+    width: fit-content;
+    font-weight: 600;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    background-color: rgb(224, 224, 224);
+    color:  var(--orange);
+  border-radius: 7px;
+}
+
+
+.myProfileData  .header{
+    margin-bottom: 1vh;
+}
+.myProfileData  .summ{
+    font-size: 14pt;
+}
+.myProfileData .invested {
+    color: rgb(255, 241, 134);
+    font-size: 1.4em;
+
+}
+.myProfileData .earned {
+    color: rgb(158, 255, 249);
+    font-size: 1.4em;
+}
+.statistics_row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* .statistics_row .half_block {
+    width: 50%;
+    display: block;
+} */
+.profile_statistics .half_block.last {
+    /* padding-left: 2vh; */
+}
+
+.myProfile .profile_info {
+    /* width: 30%; */
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    /* margin-right: 1vh; */
+}
+.myProfile .date {
+    /* width: 70%; */
+    /* margin-left: 1vh; */
+}
+
+.myProjectsBox {
+    margin-top: 4vh;
+    background: white;
+    padding: 0vh var(--common-padding);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 18vh;
+    margin-bottom: -9vh;
+}
+.myProjects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addProject {
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    transition: .5s;
+}
+.addProject:hover {
+    transform: scale(1.1);
+}
+.plusBtn {
+   background-color: var(--orange);
+   width: 4vh;
+   height: 4vh;
+   text-align: center;
+   line-height: 4vh;
+   color: white;
+   font-size: 20pt;
+}
+.plusText {
+    padding: 0 1vh;
+    display: flex;
+    color: var(--orange);
+    align-items: center;
+}
+
+.projectsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+.aProject {
+    border-radius: 10px;
+    position: relative;
+    padding: 2vh;
+    width: 80%;
+    /* height: 12vh; */
+    background-color: rgb(230, 230, 230);
+    color: var(--main-text-color);
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between;
+    align-content: space-around; */
+}
+.aProject.payed {
+    background-color: rgb(64, 233, 78);
+    color: rgb(121, 121, 121);
+}
+.project_topRow {
+    position: absolute;
+    width: calc(100% - 4vh);
+    margin: 0 auto;
+    height: fit-content;
+    display: flex;
+    /* background-color: red; */
+    justify-content: center;
+    /* align-self: center; */
+    /* justify-self: center; */
+}
+.marginTop1vh {
+    margin-top: 1vh;
+}
+.project_left_column {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    height: 100%;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.project_left2_column {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.project_left3_column {
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.project_right_column {
+    /* display: flex;
+    align-self: flex-end;
+    justify-self: flex-end; */
+}
+.project_id {
+    /* position: absolute; */
+    top: 2vh;
+    left: 2vh;
+}
+.project_progress {
+    display: flex;
+    align-items: center;
+}
+.payed .circle.filled {
+    border-color: white;
+    background-color: white;
+}
+.circle {
+    border: 1px solid var(--orange) ;
+    margin: 0 2px;
+    border-radius: 50%;
+    transition: .3s;
+}
+.circle:hover {
+    transform: scale(1.3);
+}
+.big_circle{
+    width: 14px;
+    height: 14px;
+}
+.small_circle {
+    width: 6px;
+    height: 6px;
+}
+.filled {
+    background-color: var(--orange);
+}
+.project_botRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+.checkout_btn {
+    position: absolute;
+    top: 2vh;
+    color: var(--orange);
+    right: 2vh;
+    border-radius: 5px;
+}
+.checkout_btn.disable {
+    color: rgb(255, 255, 255);
+}
+.checkout_btn.active {
+    background: var(--orange);
+    color: white;
+    transition: .3s;
+}
+.checkout_btn.active:hover {
+        transform: scale(1.1);
+}
+.myProjectsBox .medium {
+    color: rgb(192, 31, 170);
+
+}
+
+@media only screen and (max-width: 500px) {
+
+.profileData {
+    padding: 0 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.myProfileData {
+    /* margin-left: 2vh; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+}

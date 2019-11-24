@@ -1,0 +1,56 @@
+.banner-box {
+    position: relative;
+    z-index: 1;
+    height: 85vh;
+    background-image: url(../images/banner.jpg);
+    background-attachment: fixed;
+    background-color: rgb(63, 63, 63);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center ;
+}
+.banner-particles {
+    position: relative;
+    height: inherit;
+    width: 50%;
+    position: absolute;
+    background-image: url(../images/particles.png);
+    background-blend-mode: darken;
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+.banner-text {
+    padding: 10% var(--common-padding);
+    position: relative;
+    z-index: 10;
+}
+
+.banner-box>.banner-text>h1 {
+    margin: 0;
+    color: white;
+}
+.banner-box>.banner-text>h2 {
+    color: rgb(165, 165, 165);
+    font-weight: 200;
+    margin: 0;
+}
+.banner-box>.banner-text>h3 {
+    margin-top: 5vh;
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 500px){
+    .banner-box{
+        /* text-align: center; */
+        height: 80vh;
+        background-size: cover;
+        background-position: right top; 
+        background-attachment: scroll;
+    }
+    .banner-text {
+        width: 100%;
+    }
+}

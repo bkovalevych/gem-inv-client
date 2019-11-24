@@ -1,0 +1,97 @@
+#loginForm {
+    display: none;
+    /* display: block; */
+    width: 36vh;
+    /* height: 50vh; */
+    background-color: white;
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.286);
+    position: fixed;
+    top: 10vh;
+    margin: 0 auto;
+    z-index: 100;
+    /* left: calc(50% - 18vh); */
+    left: 5vh;
+    padding-bottom: 3vh;
+
+}
+.invitedBy {
+  text-align: center;
+  margin: 5px 0;
+  font-size: .8em;
+}
+.tabs>h4{
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+    margin:0;
+    padding: 1vh;
+}
+.tabs .show {
+    color: var(--main-color);
+
+}
+.tabs .hide {
+    color: rgb(194, 194, 194);
+    background-color: rgb(236, 236, 236);
+}
+#signInForm {
+    display: block;
+    width: 100%;
+}
+#loginForm form {
+    margin-top: 2vh;
+}
+#signInForm .nickName, .password {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1vh;
+    padding: .4vh .4vh;
+
+}
+.formBtn {
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    border: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.197);
+    padding: .5vh 0;
+
+}
+.formSubmit {
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+    background-color: var(--main-color);
+    box-shadow: 0 1px 0 1px rgb(16, 152, 167);
+    color: white;
+}
+.formCancel {
+    color: rgb(2, 111, 123);
+    background-color: rgb(236, 236, 236);
+    box-shadow: 0 1px 0 1px rgb(202, 202, 202);
+}
+.forgot {
+    text-align: center;
+    font-size: .7em;
+    text-decoration: underline;
+    color: rgb(99, 99, 99);
+    cursor: pointer;
+}
+#signUpForm {
+    display: none;
+}
+form input {
+    width: 80%;
+}
+#signUpForm .nickName, .password, .email {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1vh;
+    padding: .4vh .4vh;
+}
+.login-area button {
+    background-color: var(--main-color);
+    border: 0;
+    color: white;
+    box-shadow: 0 1px 0 1px rgb(16, 152, 167);
+    padding: .4vh 1.4vh;
+}

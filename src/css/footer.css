@@ -1,0 +1,140 @@
+.footer-box {
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    flex-direction: column;
+    display: flex;
+}
+
+
+.footer-top {
+    background-image: url(../images/footer-top.png);
+    background-repeat: no-repeat;
+    height: 10vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center top;
+    z-index: 11;
+    display: flex;
+    position: relative;
+}
+
+.footer-main {
+    background-color: #282828;
+    display: flex;
+    flex-direction: column;
+    padding: 5vh 0;
+    margin-top: -2px;
+}
+
+.footer-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-box img {
+    filter: grayscale(100%) brightness(10);
+    width: 30vh;
+}
+
+.footer-main-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 var(--header-padding);
+}
+
+.questions {
+    width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    color: gray;
+    align-content: center;
+    align-items: center;
+}
+
+.questions a {
+    color: var(--main-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.footer-nav {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-nav div {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: center;
+}
+
+.footer-nav a {
+    color: var(--main-color);
+    transition-duration: 0.5s;
+}
+
+ /* a {
+    color: white;
+    transition-duration: 0.5s; */
+/* } */
+
+.footer-hover {
+    transition-duration: 0.5s;
+}
+
+.footer-hover:hover {
+    color: white;
+}
+
+.socials {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.socials img {
+    width: 4vh;
+    height: 4vh;
+    margin: 0vh 1vh;
+}
+.footer-hover-soc {
+    transition: 0.5s;
+}
+.footer-hover-soc:hover {
+    filter: grayscale(1) brightness(190%);
+}
+
+@media only screen and (max-width: 500px) {
+    .hidden {
+        display: none;
+    }
+    .footer-main-row {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 var(--header-padding);
+    }
+    .questions {
+        width: 100%;
+        justify-content: center;
+    }
+    .questions p {
+        text-align: center
+    }
+    .socials {
+        width: 100%;
+        justify-content: center;
+    }
+    .socials img {
+        width: 6vh;
+        height: 6vh;
+        ;
+    }
+}

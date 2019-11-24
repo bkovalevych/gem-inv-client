@@ -1,0 +1,98 @@
+.header {
+    flex: 0 0 auto;
+}
+.currency {
+    display: flex;
+    background-color: var(--main-color);
+    padding: 0px var(--header-padding);
+    height: 3vh;
+    align-items: center;
+    z-index: 30;
+}
+
+.currency>.btc-usd {
+    margin-right: 3%;
+    color: var(--main-text-color);
+    font-size: small;
+}
+
+.main-head {
+    z-index: 30;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--header-main-color);
+    padding: 0 var(--header-padding);
+}
+
+.login-area-box {
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.login-area {
+    color: var(--main-text-color);
+    position: relative;
+    z-index: 18;
+}
+
+.login-area i {
+    color: var(--main-color);
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    width: 20vh;
+}
+/* .show {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+} */
+.navigation-box {
+    position: relative;
+    z-index: 15;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navigation-box div {
+    list-style: none;
+    width: fit-content;
+    padding: 2px 5px;
+    margin-left: 1%;
+    text-align: center;
+
+}
+
+.navigation-box a {
+    color: var(--main-text-color);
+    transition: 0.5s;
+    text-align: center;
+}
+
+.navigation-box div:hover a {
+    color: var(--main-color);
+}
+
+@media only screen and (max-width: 500px) {
+    .hidden {
+        display: none;
+    }
+    .login-area-box {
+        width: 50%;
+    }
+    .logo-box {
+        width: 50%;
+        justify-content: flex-end;
+    }
+}

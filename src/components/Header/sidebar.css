@@ -1,0 +1,68 @@
+
+#sideToggle {
+    position: absolute;
+    top: 3vh;
+    left: -23vh;
+    z-index: 20;
+    transition: .2s linear;
+    padding-left: 5vh;
+    padding-bottom: 2vh;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(233, 233, 233);
+    width: 23vh;
+}
+
+.sideMenuItem {
+    margin-bottom: 1vh;
+}
+.sideMenuItem a{
+    transition: .5s;
+}
+
+.sideMenuItem:hover  a{
+    color: var(--main-color);
+}
+
+.sideMenu a {
+    color: var(--main-text-color);
+}
+
+.profile {
+    height: 8vh;
+    margin-bottom: 1vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.profilePhoto {
+    padding: 22px;
+    margin-right: 6px;
+    background-color: black;
+    background-image: url(../../images/6.jpg);
+    background-position: center;
+    background-size: cover;
+    /* width: 30%; */
+    border-radius: 50%;
+}
+
+.profileName {
+    /* width: 70%; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#sideTrigger {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    z-index: 19;
+    transition: .2s ease-in;
+    filter: opacity(30%);
+}
