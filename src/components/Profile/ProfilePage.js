@@ -4,21 +4,38 @@ import {Component} from 'react'
 import jwt_decode from 'jwt-decode'
 import {invitedLink} from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {getButtonToReplenish} from '../../functions/UserFunctions.js'
 
 class ProfilePage extends Component {
   constructor() {
     super();
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
+    this.onChange = this.onChange.bind(this);
+    this.getBtn = this.getBtn.bind(this);
     this.state = {
       show: false,
+      amount: 1,
       _id: 0,
       nickname: '',
       email: '',
       register_date: '',
       inviteLink: ''
     };
+  }
+
+  getBtn() {
+    getButtonToReplenish(this.state.nickname, this.state.amount).then(resultHtml => {
+      document.getElementById('btn_to_pay').innerHTML = resultHtml;
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  onChange(e){
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value})
   }
 
   componentDidMount(){
@@ -51,7 +68,13 @@ render(){
         <div className="row">
         <div className="name_balance">
         <h2>@{this.state.nickname} <span className="id">id: {this.state._id}</span></h2>
-        <div className="balance">balance: <div className="summ">$0</div></div>
+        <div className="balance">balance: <div className="summ">$0</div>
+          <input type='number' min='1' max='1000' name="amount" value={this.state.amount} onChange={this.onChange}/> UAH
+          <div className="plusBtn" onClick={this.getBtn}>+</div>
+          <div id='btn_to_pay'>
+
+          </div>
+        </div>
         </div>
         <Link to="/settings"><div className="settings">settings</div></Link>
         </div>

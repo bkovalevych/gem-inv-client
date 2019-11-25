@@ -1,5 +1,15 @@
 import axios from 'axios'
 
+export const getButtonToReplenish = (nickname, amount) => {
+    return axios.
+    post('payment/replenish', {
+        nickname: nickname,
+        amount: amount
+    }).then(result => {
+        return result.data;
+    })
+};
+
 export const sendReset = user => {
     return axios
         .post('users/sendReset', {
@@ -9,7 +19,9 @@ export const sendReset = user => {
                 console.log(res.data);
                 return res.data;
         })
-}
+};
+
+
 
 export const invitedLink = userEmail => {
   return axios
