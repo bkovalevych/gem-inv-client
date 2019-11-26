@@ -25,8 +25,14 @@ class ProfilePage extends Component {
   }
 
   getBtn() {
-    getButtonToReplenish(this.state.nickname, this.state.amount).then(resultHtml => {
-      document.getElementById('btn_to_pay').innerHTML = resultHtml.data;
+    getButtonToReplenish(this.state.nickname, this.state.amount).then(result => {
+      let language = 'en';
+      document.getElementById('btn_to_pay').innerHTML =
+          '<form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">' +
+          '<input type="hidden" name="data" value="'+result.data+'" />' +
+          '<input type="hidden" name="signature" value="'+result.signature+'" />' +
+          '<input type="image" src="//static.liqpay.ua/buttons/p1'+language+'.radius.png" name="btn_text" />' +
+          '</form>'
     }).catch(err => {
       console.log(err)
     })
@@ -71,7 +77,7 @@ render(){
         <div className="balance">balance: <div className="summ">$0</div>
           <input type='number' min='1' max='1000' name="amount" value={this.state.amount} onChange={this.onChange}/> UAH
           <div className="plusBtn" onClick={this.getBtn}>+</div>
-          <div id='btn_to_pay'>
+          <div id='btn_to_pay' style='width: 200px; height: 200px; background: lightgray'>
 
           </div>
         </div>
