@@ -26,7 +26,7 @@ class ProfilePage extends Component {
 
   getBtn() {
     getButtonToReplenish(this.state.nickname, this.state.amount).then(resultHtml => {
-      document.getElementById('btn_to_pay').innerHTML = resultHtml;
+      document.getElementById('btn_to_pay').innerHTML = resultHtml.data;
     }).catch(err => {
       console.log(err)
     })
