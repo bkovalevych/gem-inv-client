@@ -77,7 +77,7 @@ render(){
         <div className="balance">balance: <div className="summ">$0</div>
           <input type='number' min='1' max='1000' name="amount" value={this.state.amount} onChange={this.onChange}/> UAH
           <div className="plusBtn" onClick={this.getBtn}>+</div>
-          <div id='btn_to_pay' style='width: 200px; height: 200px; background: lightgray'>
+          <div id='btn_to_pay'>
 
           </div>
         </div>
