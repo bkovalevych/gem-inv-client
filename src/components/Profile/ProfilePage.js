@@ -35,6 +35,9 @@ class ProfilePage extends Component {
   }
 
   getBtn() {
+    if (!this.state.showModal) {
+      return;
+    }
     let doc = document.getElementById('btn_to_pay');
     getButtonToReplenish(this.state.nickname, this.state.amount).then(result => {
 
