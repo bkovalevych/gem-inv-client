@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode'
 
 
 class LoginArea extends Component {
-    constructor(){
+    constructor() {
       super();
 
        this.state = {

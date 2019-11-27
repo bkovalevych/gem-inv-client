@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import {getButtonToReplenish} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 class ProfilePage extends Component {
   constructor() {
     // const box = (<div className="replenish" >
@@ -35,11 +36,7 @@ class ProfilePage extends Component {
 
   getBtn() {
     let doc = document.getElementById('btn_to_pay');
-    // doc.disabled = true;
     getButtonToReplenish(this.state.nickname, this.state.amount).then(result => {
-      let language = 'en';
-      let data = result.data;
-      let signature = result.signature;
 
       doc.parentNode.innerHTML +=
           '<form id="formReplenish" method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">' +
@@ -49,6 +46,7 @@ class ProfilePage extends Component {
           '</form>';
       let formReplenish = document.getElementById("formReplenish");
       formReplenish.submit();
+
       // doc.disabled = false;
     }).catch(err => {
       console.log(err)
@@ -83,7 +81,6 @@ class ProfilePage extends Component {
 
     setReplenishBoxShow() {
       this.setState({showModal: true});
-      this.getBtn()
     }
 
     handleClose() {
