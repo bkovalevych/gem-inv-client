@@ -49,14 +49,6 @@ class ProfilePage extends Component {
       alert("_id is required");
       return;
     }
-    if (!this.state.firstName) {
-      alert("firstName is required");
-      return;
-    }
-    if (!this.state.secondName) {
-      alert("secondName is required");
-      return;
-    }
     if (!this.state.amount) {
       alert("Amount is required");
       return;
@@ -76,7 +68,8 @@ class ProfilePage extends Component {
           if (result.errors) {
             console.log(result.errors);
           }
-          alert(result);
+          console.log(result);
+          alert(result.data);
         }).catch(err => {alert(err)})
 
 
@@ -167,8 +160,6 @@ render(){
             </Modal.Header>
             <Modal.Body>
               <div className='withdrawBox'>
-                <p>First Name</p> <input type='text' value={this.state.firstName} name='firstName' onChange={this.onChange}/>
-                <p>Second Name</p> <input type='text' value={this.state.secondName} name='secondName' onChange={this.onChange}/>
                 <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange}/>
                 <p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH
                 <button id='btn_to_withdraw' onClick={this.sendTransactionToWithdraw}>send</button>
