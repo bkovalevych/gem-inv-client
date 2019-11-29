@@ -10,6 +10,19 @@ export const getButtonToReplenish = (nickname, amount) => {
     })
 };
 
+export const getWithdrawData = (_id, firstName, secondName, card, amount) => {
+  return axios.
+  post('payment/withdraw', {
+      _id: _id,
+      amount: amount,
+      firstName: firstName,
+      secondName: secondName,
+      card: card
+  }).then(result => {
+      return result.data;
+  })
+};
+
 export const sendReset = user => {
     return axios
         .post('users/sendReset', {

@@ -4,7 +4,7 @@ import {Component} from 'react'
 import jwt_decode from 'jwt-decode'
 import {invitedLink} from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import {getButtonToReplenish} from '../../functions/UserFunctions.js'
+import {getButtonToReplenish, getWithdrawData} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -21,17 +21,65 @@ class ProfilePage extends Component {
     this.setReplenishBoxShow = this.setReplenishBoxShow.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getBtn = this.getBtn.bind(this);
+    this.sendTransactionToWithdraw = this.sendTransactionToWithdraw.bind(this);
+    this.setWithdrawBoxShow = this.setWithdrawBoxShow.bind(this);
+    this.setWithdrawBoxHidden = this.setWithdrawBoxHidden.bind(this);
     this.state = {
       show: false,
       showModal: false,
+      showModalWithDraw: false,
       amount: 1,
+      amountWithdraw: 1,
       _id: 0,
       nickname: '',
       email: '',
+      firstName: '',
+      secondName: '',
       register_date: '',
       inviteLink: '',
       isReplenishOpen:false
     };
+  }
+
+  sendTransactionToWithdraw() {
+    if (!this.state.showModalWithDraw) {
+      return;
+    }
+    if (!this.state._id) {
+      alert("_id is required");
+      return;
+    }
+    if (!this.state.firstName) {
+      alert("firstName is required");
+      return;
+    }
+    if (!this.state.secondName) {
+      alert("secondName is required");
+      return;
+    }
+    if (!this.state.amount) {
+      alert("Amount is required");
+      return;
+    }
+    if (!this.state.card) {
+      alert("card is required");
+      return;
+    }
+
+    let doc = document.getElementById('btn_to_pay');
+    getWithdrawData(
+        this.state._id,
+        this.state.firstName,
+        this.state.secondName,
+        this.state.card,
+        this.state.amountWithdraw).then( result => {
+          if (result.errors) {
+            console.log(result.errors);
+          }
+          alert(result);
+        }).catch(err => {alert(err)})
+
+
   }
 
   getBtn() {
@@ -76,7 +124,13 @@ class ProfilePage extends Component {
       inviteLink: invLink
     })
   }
+    setWithdrawBoxHidden() {
+      this.setState({showModalWithDraw: false});
+    }
 
+    setWithdrawBoxShow() {
+      this.setState({showModalWithDraw: true});
+    }
 
     setReplenishBoxHidden() {
        this.setState({showModal: false});
@@ -106,7 +160,25 @@ render(){
         <div className="balance">
           <div className="balanceRow"> balance: <div className="summ">$0</div></div>
           <button onClick={this.setReplenishBoxShow}>Replenish</button>
+          <button onClick={this.setWithdrawBoxShow}>Withdraw money to card</button>
+          <Modal show={this.state.showModalWithDraw} onHide={this.setWithdrawBoxHidden}>
+            <Modal.Header closeButton>
+              <Modal.Title>Withdraw your money</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className='withdrawBox'>
+                <p>First Name</p> <input type='text' value={this.state.firstName} name='firstName' onChange={this.onChange}/>
+                <p>Second Name</p> <input type='text' value={this.state.secondName} name='secondName' onChange={this.onChange}/>
+                <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange}/>
+                <p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH
+                <button id='btn_to_withdraw' onClick={this.sendTransactionToWithdraw}>send</button>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.setWithdrawBoxHidden}>Close</Button>
 
+            </Modal.Footer>
+          </Modal>
           <Modal show={this.state.showModal} onHide={this.setReplenishBoxHidden}>
             <Modal.Header closeButton>
               <Modal.Title>Replenish yor balance</Modal.Title>
