@@ -118,7 +118,7 @@ class ProfilePage extends Component {
         email: decoded.email,
         register_date: date,
         inviteLink: invLink,
-        balance: decoded.balance
+        balance: decoded.balance.toString()
       })
 
   }
