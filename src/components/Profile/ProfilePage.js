@@ -4,7 +4,7 @@ import {Component} from 'react'
 import jwt_decode from 'jwt-decode'
 import {invitedLink} from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import {getButtonToReplenish, getWithdrawData} from '../../functions/UserFunctions.js'
+import {getButtonToReplenish, getWithdrawData, getBalance} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,6 +24,7 @@ class ProfilePage extends Component {
     this.sendTransactionToWithdraw = this.sendTransactionToWithdraw.bind(this);
     this.setWithdrawBoxShow = this.setWithdrawBoxShow.bind(this);
     this.setWithdrawBoxHidden = this.setWithdrawBoxHidden.bind(this);
+    this.getBalance = getBalance.bind(this);
     this.state = {
       show: false,
       showModal: false,
@@ -37,7 +38,8 @@ class ProfilePage extends Component {
       secondName: '',
       register_date: '',
       inviteLink: '',
-      isReplenishOpen:false
+      isReplenishOpen:false,
+      balance: 0
     };
   }
 
@@ -73,6 +75,7 @@ class ProfilePage extends Component {
         }).catch(err => {alert(err)})
 
 
+
   }
 
   getBtn() {
@@ -90,7 +93,6 @@ class ProfilePage extends Component {
           '</form>';
       let formReplenish = document.getElementById("formReplenish");
       formReplenish.submit();
-
       // doc.disabled = false;
     }).catch(err => {
       console.log(err)
@@ -108,13 +110,17 @@ class ProfilePage extends Component {
     const token = localStorage.usertoken;
     const decoded = jwt_decode(token);
     const date = new Date(decoded.register_date).getDate() + '/' + (new Date(decoded.register_date).getMonth() + 1) + '/' + new Date(decoded.register_date).getFullYear();
-    var invLink = invitedLink(decoded.email);
-      this.setState({
-      _id: decoded._id,
-      nickname: decoded.nickname,
-      email: decoded.email,
-      register_date: date,
-      inviteLink: invLink
+    const invLink = invitedLink(decoded.email);
+    let parent = this;
+    this.getBalance(decoded._id).then (balance => {
+      parent.setState({
+        _id: decoded._id,
+        nickname: decoded.nickname,
+        email: decoded.email,
+        register_date: date,
+        inviteLink: invLink,
+        balance: balance
+      })
     })
   }
     setWithdrawBoxHidden() {
@@ -151,7 +157,7 @@ render(){
         <div className="name_balance">
         <h2>@{this.state.nickname} <span className="id">id: {this.state._id}</span></h2>
         <div className="balance">
-          <div className="balanceRow"> balance: <div className="summ">$0</div></div>
+          <div className="balanceRow"> balance: <div className="summ">{this.state.balance} uah</div></div>
           <button onClick={this.setReplenishBoxShow}>Replenish</button>
           <button onClick={this.setWithdrawBoxShow}>Withdraw money to card</button>
           <Modal show={this.state.showModalWithDraw} onHide={this.setWithdrawBoxHidden}>
