@@ -26,8 +26,8 @@ componentDidMount(){
 
   logOut(e){
           e.preventDefault()
-          localStorage.removeItem('usertoken')
-          window.parent.location.href = 'https://geminv.herokuapp.com';
+          localStorage.removeItem('usertoken');
+          window.parent.location.href = 'https://gem-inv-client.herokuapp.com';
       };
 
   showLoginArea() {

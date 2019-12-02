@@ -111,7 +111,7 @@ class ProfilePage extends Component {
     const decoded = jwt_decode(token);
     const date = new Date(decoded.register_date).getDate() + '/' + (new Date(decoded.register_date).getMonth() + 1) + '/' + new Date(decoded.register_date).getFullYear();
     const invLink = invitedLink(decoded.email);
-
+    const balance = getBalance()
       this.setState({
         _id: decoded._id,
         nickname: decoded.nickname,
