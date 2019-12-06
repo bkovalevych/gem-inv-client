@@ -12,8 +12,9 @@ export const getButtonToReplenish = (nickname, amount) => {
 
 export const getBalance = (id) => {
     return axios.post('users/getBalance', {
-        id: id
+        "id": id
     }).then(result => {
+        console.log(result.data + " get Balance");
         return result.data;
     })
 };

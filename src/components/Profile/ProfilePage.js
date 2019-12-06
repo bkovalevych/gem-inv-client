@@ -43,12 +43,17 @@ class ProfilePage extends Component {
     };
   }
 
-  sendTransactionToWithdraw() {
+  sendTransactionToWithdraw(e) {
+    e.preventDefault();
     if (!this.state.showModalWithDraw) {
       return;
     }
     if (!this.state._id) {
       alert("_id is required");
+      return;
+    }
+    if (this.state.amountWithdraw > this.state.balance) {
+      alert("Amount is bigger than balance");
       return;
     }
     if (!this.state.amount) {
@@ -111,7 +116,12 @@ class ProfilePage extends Component {
     const decoded = jwt_decode(token);
     const date = new Date(decoded.register_date).getDate() + '/' + (new Date(decoded.register_date).getMonth() + 1) + '/' + new Date(decoded.register_date).getFullYear();
     const invLink = invitedLink(decoded.email);
-    const balance = getBalance()
+    this.getBalance(decoded._id).then(data => {
+      console.log("componentDidMount " + data);
+      this.setState({
+         balance : data.data
+       })
+     });
       this.setState({
         _id: decoded._id,
         nickname: decoded.nickname,
@@ -148,15 +158,15 @@ class ProfilePage extends Component {
   // start preparations mining processing selling finish
 render(){
 
+    console.log(this.state.balance);
   return (
-
     <div className="ProfilePage">
       <div className="myProfile">
         <div className="row">
         <div className="name_balance">
         <h2>@{this.state.nickname} <span className="id">id: {this.state._id}</span></h2>
         <div className="balance">
-          <div className="balanceRow"> balance: <div className="summ">{this.state.balance} uah</div></div>
+          <div className="balanceRow"> balance: <div className="summ">{this.state.balance.toString()} uah</div></div>
           <button onClick={this.setReplenishBoxShow}>Replenish</button>
           <button onClick={this.setWithdrawBoxShow}>Withdraw money to card</button>
           <Modal show={this.state.showModalWithDraw} onHide={this.setWithdrawBoxHidden}>
@@ -164,11 +174,11 @@ render(){
               <Modal.Title>Withdraw your money</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div className='withdrawBox'>
-                <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange}/>
-                <p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH
-                <button id='btn_to_withdraw' onClick={this.sendTransactionToWithdraw}>send</button>
-              </div>
+              <form className='withdrawBox' onSubmit={this.sendTransactionToWithdraw}>
+                  <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange} pattern="^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$"/>
+                  <p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH
+                  <button id='btn_to_withdraw' type='submit'>send</button>
+              </form>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={this.setWithdrawBoxHidden}>Close</Button>
