@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import TariffBlock from "./TariffBlock";
-
+import {getPlans} from '../../../functions/UserFunctions';
 class TariffsComponent extends Component {
     constructor(props) {
         super(props);
@@ -10,33 +10,23 @@ class TariffsComponent extends Component {
     }
 
     componentDidMount() {
-        //TODO: service for download tariffs
-        this.setState({
-            plans: [{
-                name: "111",
-                duration: "7",
-                profit: "0.01"
-            },
-                {
-                    name: "222",
-                    duration: "7",
-                    profit: "0.03"
-                },
-                {
-                    name: "333",
-                    duration: "7",
-                    profit: "0.02"
-                },
-            ]
-        })
+        getPlans().then(resp => {
+            this.setState({
+                plans: resp.data
+            })
+        });
+
     }
 
     render() {
+        const _f = (val) => {
+            return parseFloat(val.toString());
+        }
         return (
             <>
                 {this.state.plans.map((item) => {
-                    return <TariffBlock name={item.name} className="short" term={parseInt(item.duration)}
-                                        profit={`${parseFloat(item.profit) * 100}%`}/>
+                    return <TariffBlock name={item.name} className="short" term={_f(item.duration)}
+                                        profit={`${_f(item.profit.$numberDecimal) * 100}%`}/>
                 })}
             </>
         )
