@@ -7,7 +7,7 @@ class TariffBlock extends Component {
             <div className={`plan-block ${this.props.className}`}>
                 <h4>{this.props.name}</h4>
                 <h2>{this.props.term} days</h2>
-                <div className="btn plan-btn">Start now</div>
+                <div onClick={() => this.props.funcStart(this.props.tarId)} className="btn plan-btn">Start now</div>
                 <div className="profit-block">
                     <div className="profit-percent"><h4>Profit:</h4><h3>{this.props.profit}</h3></div>
                 </div>
