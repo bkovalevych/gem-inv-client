@@ -18,6 +18,14 @@ export const getButtonToReplenish = (nickname, amount) => {
     })
 };
 
+export const getTransactions = (id) => {
+  return axios.get("project/" + id).then(resp => {
+      return resp.data;
+  })  .catch(err => {
+      return {errors: err};
+  })
+};
+
 export const getBalance = (id) => {
     return axios.post('users/getBalance', {
         "id": id

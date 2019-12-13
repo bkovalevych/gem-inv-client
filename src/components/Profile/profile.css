@@ -47,6 +47,17 @@
     margin: 10px 0;
 
 }
+
+th {
+    background: #73ff71;
+    border: #282828 solid 1px;
+    padding: 0 20px 0 20px;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+}
 .name_balance .summ {
     font-size: 1.3em;
     margin-left: 1vh;
