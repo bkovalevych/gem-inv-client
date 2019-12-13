@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TariffBlock from './TariffBlock'
 import './tariffs.css'
+import TariffsComponent from "./TariffsComponent";
 
 class Tariffs extends Component {
     render() {
@@ -14,9 +15,10 @@ class Tariffs extends Component {
                     </h3>
                 </div>
                 <div className="plans">
-                    <TariffBlock name="Short" className="short" term="18" profit="112%" />
-                    <TariffBlock name="Medium" className="medium" term="30" profit="124%" />
-                    <TariffBlock name="Long" className="long" term="45" profit="136%" />
+                    <TariffsComponent/>
+                    {/*<TariffBlock name="Short" className="short" term="18" profit="112%" />*/}
+                    {/*<TariffBlock name="Medium" className="medium" term="30" profit="124%" />*/}
+                    {/*<TariffBlock name="Long" className="long" term="45" profit="136%" />*/}
                 </div>
                 <div className="pay-restrict">
                     <h5>*every project may be started only from $50</h5>
