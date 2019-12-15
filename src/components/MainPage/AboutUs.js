@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 import '../../css/aboutus.css'
-
+import {mainChart} from "../../functions/UserFunctions"
 class AboutUs extends Component {
+    constructor(params) {
+        super(params);
+        this.state = {numberUsers: 0, invested: 0, payed: 0}
+    }
+
+    componentDidMount() {
+        mainChart().then(resp => {
+            if (resp.data) {
+                this.setState(resp.data);
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     render() {
         return (
             <div className="about-box" id="navAbout" > 
@@ -18,20 +33,16 @@ class AboutUs extends Component {
 
                 <div className="stats">
                     <div className="stat-block">
-                        <h2>13 212</h2>
+                        <h2>{this.state.numberUsers}</h2>
                         <h4>Happy clients</h4>
                     </div>
                     <div className="stat-block">
-                        <h2>$41 743</h2>
+                        <h2>{this.state.invested} UAH</h2>
                         <h4>Invested in</h4>
                     </div>
                     <div className="stat-block">
-                        <h2>$65 443</h2>
+                        <h2>{this.state.payed} UAH </h2>
                         <h4>Payed</h4>
-                    </div>
-                    <div className="stat-block last-stat">
-                        <h2>228</h2>
-                        <h4>Working hours</h4>
                     </div>
                 </div>
                 <div className="about-bottom">

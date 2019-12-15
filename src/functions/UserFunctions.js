@@ -8,6 +8,14 @@ export const getPlans = () => {
     })
 } ;
 
+export const userChart = (id) => {
+    return axios.get('chart/user/' + id).then(resp => {
+        return resp.data;
+    }).catch(err => {
+        return {errors: err};
+    })
+};
+
 export const getButtonToReplenish = (nickname, amount) => {
     return axios.
     post('payment/replenish', {
@@ -17,6 +25,14 @@ export const getButtonToReplenish = (nickname, amount) => {
         return result.data;
     })
 };
+
+export const mainChart = () => {
+    return axios.get('chart/mainChart').then(resp => {
+        return resp.data;
+    }).catch(error => {
+        return {errors: error};
+    })
+}
 
 export const getTransactions = (id) => {
   return axios.get("project/" + id).then(resp => {

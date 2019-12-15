@@ -4,8 +4,9 @@ import { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 import { invitedLink } from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { getButtonToReplenish, getWithdrawData, getBalance, getTransactions } from '../../functions/UserFunctions.js'
-import { Modal, Button } from 'react-bootstrap'
+import {getButtonToReplenish, getWithdrawData, getBalance, getTransactions, userChart} from '../../functions/UserFunctions.js'
+import {Modal, Button} from 'react-bootstrap'
+
 
 class ProfilePage extends Component {
   constructor() {
@@ -38,7 +39,9 @@ class ProfilePage extends Component {
       secondName: '',
       register_date: '',
       inviteLink: '',
-      isReplenishOpen: false,
+      isReplenishOpen:false,
+      invested: 0,
+      earned: 0,
       balance: 0,
       data: null
     };
@@ -125,6 +128,13 @@ class ProfilePage extends Component {
         balance: data.data
       })
     });
+    userChart(decoded._id).then(resp => {
+      if (resp.data) {
+        this.setState(resp.data);
+      }
+    }).catch(err => {
+      console.log(err);
+    });
     this.getTransactions(decoded._id).then(resp => {
       resp.data.forEach(elem => {
         let st = new Date(elem.startDate);
@@ -188,7 +198,7 @@ class ProfilePage extends Component {
     ) : "";
   };
 
-  render() {
+  render(){
 
     console.log(this.state.balance);
     return (
@@ -236,38 +246,38 @@ class ProfilePage extends Component {
 
                 </div>
 
-              </div>
-            </div>
-            <Link to="/settings"><div className="settings">settings</div></Link>
-          </div>
-          <div className="profileData">
-            <div className="myProfileData">
-              <div className="col">
-                <div className="profile_info">
-                  <div className="profile_info_header">profile info </div>
-                  <div>registration date: {this.state.register_date}</div>
-                  <div>email: {this.state.email}</div>
                 </div>
               </div>
-              <span className="vertical_divider"></span>
-              <div className="col">
-                <div className="profile_statistics">
-                  <div className="profile_info_header">statistics</div>
-                  <div className="statistics_row">
-                    <div className="col">
-                      <div>invested:</div>
-                      <div className="invested">0</div>
-                    </div>
-                    <div className="col">
-                      <div>earned:</div>
-                      <div className="earned">0</div>
+              <Link to="/settings"><div className="settings">settings</div></Link>
+            </div>
+            <div className="profileData">
+              <div className="myProfileData">
+                <div className="col">
+                  <div className="profile_info">
+                    <div className="profile_info_header">profile info </div>
+                    <div>registration date: {this.state.register_date}</div>
+                    <div>email: {this.state.email}</div>
+                  </div>
+                </div>
+                <span className="vertical_divider"></span>
+                <div className="col">
+                  <div className="profile_statistics">
+                    <div className="profile_info_header">statistics</div>
+                    <div className="statistics_row">
+                      <div className="col">
+                        <div>invested:</div>
+                        <div className="invested">{this.state.invested} UAH</div>
+                      </div>
+                      <div className="col">
+                        <div>earned:</div>
+                        <div className="earned">{this.state.earned} UAH</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         <div className="myProjectsBox">
           <h2>My projects</h2>
