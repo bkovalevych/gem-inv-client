@@ -21,7 +21,7 @@ class Tariffs extends Component {
                     {/*<TariffBlock name="Long" className="long" term="45" profit="136%" />*/}
                 </div>
                 <div className="pay-restrict">
-                    <h5>*every project may be started only from $50</h5>
+                    <h5>*every project may be started only from $10</h5>
                     <div className="only-btc"></div>
                 </div>
             </div>

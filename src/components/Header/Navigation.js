@@ -11,7 +11,6 @@ class Navigation extends Component {
                     <div><Link to="/"><a href="#navTariffs">Plans</a></Link></div>
                     <div ><Link to="/"><a href="#navPath">Path</a></Link></div>
                     <div><Link to="/"><a href="#navGallery">Gallery</a></Link></div>
-                    <div><Link to="/"><a href="#1">FAQ</a></Link></div>
             </div>
 
         )

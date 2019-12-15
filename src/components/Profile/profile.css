@@ -13,6 +13,8 @@
 }
 .inputSumm_Field {
     border: none;
+    width: 30%;
+    box-shadow: 0 1px rgb(21, 138, 131);
     padding: 4px;
 }
 #replenishBox {
@@ -27,6 +29,13 @@
 .profileData {
     display: flex;
     flex-direction: row;
+}
+.modal_body {
+    display: flex;
+    flex-direction: column;
+}
+.modal_body > div {
+    
 }
 .name_balance>h2,.balance {
     margin: 0;
@@ -54,14 +63,19 @@
 }
 
 .withdrawBox {
-    display: grid;
-    grid-template-columns: 30%  50%;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
-.withdrawBox > p {
-    align-content: end;
-
+.withdrawBox>div{
+    margin: 1vh 0;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.withdrawBox  p {
+    margin: 0;
+    margin-right: 2vh;
 }
 
 .row {
@@ -97,6 +111,7 @@
 .myProfileData {
     width: 100%;
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
 

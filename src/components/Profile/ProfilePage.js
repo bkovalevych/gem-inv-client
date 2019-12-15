@@ -6,7 +6,6 @@ import {invitedLink} from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import {getButtonToReplenish, getWithdrawData, getBalance} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ProfilePage extends Component {
   constructor() {
@@ -167,17 +166,17 @@ render(){
         <h2>@{this.state.nickname} <span className="id">id: {this.state._id}</span></h2>
         <div className="balance">
           <div className="balanceRow"> balance: <div className="summ">{this.state.balance.toString()} uah</div></div>
-          <button onClick={this.setReplenishBoxShow}>Replenish</button>
-          <button onClick={this.setWithdrawBoxShow}>Withdraw money to card</button>
+          <button className="btn repl_btn" onClick={this.setReplenishBoxShow}>Replenish</button>
+          <button className="btn withdr_btn" onClick={this.setWithdrawBoxShow}>Withdraw money to card</button>
           <Modal show={this.state.showModalWithDraw} onHide={this.setWithdrawBoxHidden}>
             <Modal.Header closeButton>
               <Modal.Title>Withdraw your money</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <form className='withdrawBox' onSubmit={this.sendTransactionToWithdraw}>
-                  <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange} pattern="^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$"/>
-                  <p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH
-                  <button id='btn_to_withdraw' type='submit'>send</button>
+                 <div> <p>Card</p> <input type='text' value={this.state.card} name='card' onChange={this.onChange} pattern="^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$"/></div>
+                  <div><p>Amount</p> <input className="inputSumm_Field" type='number' min='1' max='10000' name="amountWithdraw" value={this.state.amountWithdraw} onChange={this.onChange}/> UAH </div>
+                  <button className="btn send_btn" id='btn_to_withdraw' type='submit'>Send</button>
               </form>
             </Modal.Body>
             <Modal.Footer>
@@ -190,9 +189,9 @@ render(){
               <Modal.Title>Replenish yor balance</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div >
-                <input className="inputSumm_Field" type='number' min='1' max='1000' name="amount" value={this.state.amount} onChange={this.onChange}/> UAH
-                <button id='btn_to_pay' onClick={this.getBtn}>Pay</button>
+              <div className="modal_body">
+                <div><input className="inputSumm_Field" type='number' min='1' max='1000' name="amount" value={this.state.amount} onChange={this.onChange}/> UAH</div>
+                <button className="btn pay_btn" id='btn_to_pay' onClick={this.getBtn}>Pay</button>
               </div>
             </Modal.Body>
             <Modal.Footer>
@@ -224,11 +223,11 @@ render(){
                 <div className="statistics_row">
                 <div className="col">
                 <div>invested:</div>
-                <div className="invested">$0</div>
+                <div className="invested">0</div>
                 </div>
                 <div className="col">
                 <div>earned:</div>
-                <div className="earned">$0</div>
+                <div className="earned">0</div>
                 </div>
                 </div>
                 </div>

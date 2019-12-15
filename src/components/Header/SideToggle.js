@@ -51,8 +51,6 @@ componentDidMount(){
               <div className="profileName">{this.state.nickname}</div>
             </div>
             <div onClick={this.hideLoginArea} className="sideMenuItem"><Link to="/profile">Profile</Link></div>
-            <div className="sideMenuItem"><a href="#1">Projects</a></div>
-            <div className="sideMenuItem"><a href="#1">Settings</a></div>
             <div className="sideMenuItem btn about-btn" onClick={this.logOut.bind(this)}><a href="/">Log out</a></div>
           </div>
         </div>

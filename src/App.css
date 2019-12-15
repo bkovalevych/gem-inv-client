@@ -39,6 +39,10 @@ body {
 a {
   text-decoration: none;
 }
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -47,18 +51,41 @@ a {
 }
 
 .btn {
-  padding: 1vh 1.5vh;
+  border-radius: 0;
+  padding: .5vh 1.5vh;
   position: relative;
   text-align: center;
   color: white;
-  /* font-weight: bold; */
-  /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.616); */
   transition-duration: 0.5s;
-
 }
 
+.pay_btn {
+  margin-top: 2vh;
+  width: fit-content;
+  margin-bottom: 2vh;
+  background-color: rgb(18, 162, 129);
+  box-shadow: 0 1px 0 1px rgb(19, 114, 125);
+}
+.send_btn {
+  margin-top: 2vh;
+  width: fit-content;
+  margin-bottom: 2vh;
+  background-color: rgb(18, 162, 129);
+  box-shadow: 0 1px 0 1px rgb(19, 114, 125);
+}
+.repl_btn {
+  margin-bottom: 2vh;
+  background-color: rgb(18, 162, 129);
+  box-shadow: 0 1px 0 1px rgb(19, 114, 125);
+}
+
+.withdr_btn {
+  margin-bottom: 2vh;
+  background-color: rgb(13, 125, 142);
+  box-shadow: 0 1px 0 1px rgb(19, 114, 125);
+}
 .about-btn {
-  background: var(--main-color);	  background: var(--main-color);
+  background-color: var(--main-color);	 
   display: inline-block;	  display: inline-block;
   box-shadow: 0 1px 0 1px rgb(16, 152, 167);
   margin-top: 1vh;	  margin-top: 1vh;
