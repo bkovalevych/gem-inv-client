@@ -6,7 +6,7 @@ import {invitedLink} from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import {getButtonToReplenish, getWithdrawData, getBalance, getTransactions} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class ProfilePage extends Component {
   constructor() {
