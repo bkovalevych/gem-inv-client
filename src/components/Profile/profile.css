@@ -56,6 +56,23 @@
     margin: 10px 0;
 
 }
+.transactionBlock table {
+    border-spacing: 0px 20px;
+    border-collapse: separate;
+}
+.transactionBlock tr{
+    margin: 5vh 0;
+    background-color: rgb(38, 230, 217);
+}
+th {
+    background-color: white;
+    padding: 0 20px 0 20px;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+}
 .name_balance .summ {
     font-size: 1.3em;
     margin-left: 1vh;
@@ -215,6 +232,7 @@
     background-color: rgb(240, 240, 240);
     display: flex;
     transition: .5s;
+    margin: 3vh 0;
 }
 .addProject:hover {
     transform: scale(1.1);
