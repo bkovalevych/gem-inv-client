@@ -6,6 +6,8 @@ import { invitedLink } from '../../functions/UserFunctions.js'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import {getButtonToReplenish, getWithdrawData, getBalance, getTransactions, userChart} from '../../functions/UserFunctions.js'
 import {Modal, Button} from 'react-bootstrap'
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 
 class ProfilePage extends Component {
@@ -137,12 +139,8 @@ class ProfilePage extends Component {
     });
     this.getTransactions(decoded._id).then(resp => {
       resp.data.forEach(elem => {
-        let st = new Date(elem.startDate);
-        let fn = new Date(elem.endDate);
-        elem.startDate = `${st.getDate()}/${st.getMonth()}`;
-        elem.endDate = `${fn.getDate()}/${fn.getMonth()}`;
         elem.amount = elem.amount.$numberDecimal;
-        elem.plan.profit = elem.plan.profit.$numberDecimal;
+        elem.plan.profit = elem.plan.profit.$numberDecimal * 100;
       });
       this.setState({ data: resp.data });
     }).catch(err => {
@@ -185,16 +183,23 @@ class ProfilePage extends Component {
 
   renderTable = () => {
     return this.state.data ? this.state.data.map(transaction =>
-      (
+    {
+      let st = new Date(transaction.startDate);
+      let fn = new Date(transaction.endDate);
+      let cur = new Date().valueOf();
+      let percentage = fn.valueOf() <= cur? 100: ((cur - st.valueOf()) / (fn.valueOf() - st.valueOf()) * 100).toFixed(1);
+      return (
         <tr key={transaction._id}>
           <td>{transaction.plan.name}</td>
-          <td>{transaction.startDate}</td>
-          <td>{transaction.endDate}</td>
+          <td>{st.getDate()}/{st.getMonth()}</td>
+          <td>{fn.getDate()}/{fn.getMonth()}</td>
           <td>{transaction.amount}</td>
-          <td>{transaction.plan.profit}</td>
+          <td>{(transaction.amount * (1 + transaction.plan.profit / 100)).toFixed(2)}</td>
+          <td>{transaction.plan.profit}%</td>
           <td>{transaction.status}</td>
+          <td style={{width: "50px"}}><CircularProgressbar value={percentage} text={`${percentage}%`}/></td>
         </tr>
-      )
+      )}
     ) : "";
   };
 
@@ -293,8 +298,10 @@ class ProfilePage extends Component {
                   <th>Start Date</th>
                   <th>End Date</th>
                   <th>Invested</th>
+                  <th>Earned by finish</th>
                   <th>Profit</th>
                   <th>Status</th>
+                  <th>Time spent</th>
                 </tr>
                 {this.renderTable()}
               </table>
