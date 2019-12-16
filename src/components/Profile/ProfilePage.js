@@ -191,8 +191,8 @@ class ProfilePage extends Component {
       return (
         <tr key={transaction._id}>
           <td>{transaction.plan.name}</td>
-          <td>{st.getDate()}/{st.getMonth()}</td>
-          <td>{fn.getDate()}/{fn.getMonth()}</td>
+          <td>{st.getDate()}/{st.getMonth() + 1}</td>
+          <td>{fn.getDate()}/{fn.getMonth() + 1}</td>
           <td>{transaction.amount}</td>
           <td>{(transaction.amount * (1 + transaction.plan.profit / 100)).toFixed(2)}</td>
           <td>{transaction.plan.profit}%</td>
