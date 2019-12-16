@@ -75,7 +75,17 @@ export const sendReset = user => {
         })
 };
 
-
+export const createTarif = (userId, planId, amount) => {
+  return axios
+    .post('project/', {
+      idUser: userId,
+      idPlan: planId,
+      amount: amount
+    })
+    .then(res => {
+      console.log(res.data);
+    })
+}
 
 export const invitedLink = userEmail => {
   return axios

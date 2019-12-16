@@ -287,10 +287,13 @@ class ProfilePage extends Component {
         <div className="myProjectsBox">
           <h2>My projects</h2>
           <div className="myProjects">
+          <Link to='/' className="plusText" onClick={this.handleShow}>
             <div className="addProject">
               <div className="plusBtn">+</div>
-              <Link to='/' className="plusText" onClick={this.handleShow}>Add project</Link>
+              Add project
             </div>
+</Link>
+
             <div className="transactionBlock">
               <table id="customers">
                 <tr>
